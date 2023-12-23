@@ -356,7 +356,8 @@ article .icon {
 /* PROJECTS SECTION */
 
 #projects {
-  /* position: relative; */
+  position: relative;
+  margin-top: 10rem;
 }
 
 .color-container {
