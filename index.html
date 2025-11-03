@@ -4,24 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monu Prajapat</title>
+    <title>Monu Prajapat | Full Stack Developer</title>
+    <meta name="description" content="Full Stack Developer specializing in React, Node.js, and modern web technologies" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo">Monu Prajapat</div>
+      <div class="logo">
+        <span class="logo-text">Monu Prajapat</span>
+      </div>
       <div>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo">Monu Prajapat</div>
+      <div class="logo">
+        <span class="logo-text">Monu Prajapat</span>
+      </div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -29,108 +37,109 @@
           <span></span>
         </div>
         <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+          <li><a href="#about" onclick="toggleMenu()" class="nav-link">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()" class="nav-link">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()" class="nav-link">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()" class="nav-link">Contact</a></li>
         </div>
       </div>
     </nav>
     <section id="profile">
-      <div class="section__pic-container">
-        <img  src="./assets/profile-pic-new.png" alt="John Doe profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Monu Prajapat</h1>
-        <p class="section__text__p2">Full Stack Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('https://flowcv.com/resume/g0h0rgd8st')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
+      <div class="profile-container">
+        <div class="section__pic-container">
+          <div class="profile-image-wrapper">
+            <img src="./assets/profile-pic-new.png" alt="Monu Prajapat profile picture" class="profile-image" />
+          </div>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/monuprajapat/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/MONUPRAJAPAT'"
-          />
+          <div class="section__text">
+          <p class="section__text__p1">Hello, I'm</p>
+          <h1 class="title">Monu Prajapat</h1>
+          <p class="section__text__p2">Full Stack Developer</p>
+          <p class="section__text__p3">3+ years of expertise in MERN Stack, DevOps, AWS & Web3 • Building scalable solutions that drive business growth</p>
+          <div class="btn-container">
+            <button
+              class="btn btn-primary"
+              onclick="window.open('https://flowcv.com/resume/g0h0rgd8st')"
+            >
+              Download CV
+            </button>
+            <button class="btn btn-secondary" onclick="location.href='./#contact'">
+              Get In Touch
+            </button>
+          </div>
+          <div id="socials-container">
+            <a href="https://www.linkedin.com/in/monuprajapat/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <img
+                src="./assets/linkedin.png"
+                alt="LinkedIn profile"
+                class="icon"
+              />
+            </a>
+            <a href="https://github.com/MONUPRAJAPAT" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <img
+                src="./assets/github.png"
+                alt="GitHub profile"
+                class="icon"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>
-    <section id="about" style="margin-top: 50px;">
+    <section id="about">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
-      <div style="margin-top: 20px;" class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/profile-pic-2-3.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
+      <div class="section-container">
         <div class="about-details-container">
           <div class="about-containers">
             <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
+              <div class="details-icon">
+                <img
+                  src="./assets/experience.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+              </div>
               <h3>Experience</h3>
-              <p>1+ years <br />Full Stack Development</p>
+              <p>3+ years <br />Full Stack Development</p>
             </div>
             <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
+              <div class="details-icon">
+                <img
+                  src="./assets/education.png"
+                  alt="Education icon"
+                  class="icon"
+                />
+              </div>
               <h3>Education</h3>
               <p>
-                B.E. (Bachleor of Engineering)<br />Computer Science and
+                B.E. (Bachelor of Engineering)<br />Computer Science and
                 Engineering
               </p>
             </div>
           </div>
-          <div class="text-container" style="font-size: 20px">
+          <div class="text-container">
             <p>
-              Hi, I'm Monu Prajapat, a Full Stack Developer well-versed in
-              TypeScript, React JS, and various UI Libraries for dynamic
-              frontend experiences. On the backend, I navigate Node.js,
-              Express.js, and both relational and document databases. <br />
-
-              Holding a B.E. in Computer Science from Chandigarh University, I
-              marry technical expertise with hobbies like chess, cooking, and
-              driving. <br />
-
-              With a year's hands-on experience, I specialize in architecting
-              scalable web apps and have a growing understanding of DevOps
-              essentials. While my forte lies in frontend wizardry, I
-              comfortably manage full-stack complexities. <br />
+              Hi, I'm <strong>Monu Prajapat</strong>, a seasoned Full Stack Developer with 3+ years of experience specializing in the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js). I'm passionate about building scalable, high-performance web applications with modern technologies.
+            </p>
+            <p>
+              My expertise spans across <strong>frontend wizardry</strong> with React, TypeScript, and modern UI frameworks, to <strong>backend architecture</strong> using Node.js and Express. I'm well-versed in <strong>DevOps practices</strong>, <strong>AWS cloud services</strong>, and have hands-on experience with <strong>Web3 technologies</strong> including blockchain and smart contracts.
+            </p>
+            <p>
+              Holding a B.E. in Computer Science from Chandigarh University, I combine technical expertise with a passion for continuous learning. Beyond coding, I enjoy chess, cooking, and exploring new technologies that push the boundaries of web development.
             </p>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
+      <div class="scroll-indicator">
+        <a href="#experience" class="scroll-link" aria-label="Scroll to experience section">
+          <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+          />
+        </a>
+      </div>
     </section>
     <section id="experience">
       <p class="section__text__p1">Explore My</p>
@@ -138,7 +147,7 @@
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
+            <h2 class="experience-sub-title">MERN Stack</h2>
             <div class="article-container">
               <article>
                 <img
@@ -147,8 +156,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
+                  <h3>MongoDB</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -158,8 +167,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
+                  <h3>Express.js</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -169,8 +178,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>SASS</h3>
-                  <p>Intermediate</p>
+                  <h3>React.js</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -180,8 +189,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>JavaScript</h3>
-                  <p>Intermediate</p>
+                  <h3>Node.js</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -192,40 +201,7 @@
                 />
                 <div>
                   <h3>TypeScript</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Material UI</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React Js</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Ant Design</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
@@ -236,15 +212,13 @@
                 />
                 <div>
                   <h3>Redux</h3>
-                  <p>Intermediate</p>
+                  <p>Advanced</p>
                 </div>
               </article>
             </div>
           </div>
           <div class="details-container">
-            <h2 class="experience-sub-title">
-              Backened,Tools & Product Development
-            </h2>
+            <h2 class="experience-sub-title">Frontend Development</h2>
             <div class="article-container">
               <article>
                 <img
@@ -253,8 +227,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Node Js</h3>
-                  <p>Intermediate</p>
+                  <h3>JavaScript</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -264,8 +238,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Express Js</h3>
-                  <p>Intermediate</p>
+                  <h3>HTML5</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -275,8 +249,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>MongoDB</h3>
-                  <p>Intermediate</p>
+                  <h3>CSS3</h3>
+                  <p>Expert</p>
                 </div>
               </article>
               <article>
@@ -286,8 +260,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Git & Github</h3>
-                  <p>Intermediate</p>
+                  <h3>Material UI</h3>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
@@ -297,8 +271,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Postman</h3>
-                  <p>Intermediate</p>
+                  <h3>Ant Design</h3>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
@@ -308,10 +282,15 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Vs Code</h3>
-                  <p>Intermediate</p>
+                  <h3>SASS</h3>
+                  <p>Advanced</p>
                 </div>
               </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">DevOps & Cloud</h2>
+            <div class="article-container">
               <article>
                 <img
                   src="./assets/checkmark.png"
@@ -319,19 +298,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>WebStorm</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>System Design</h3>
-                  <p>Intermediate</p>
+                  <h3>AWS</h3>
+                  <p>Advanced</p>
                 </div>
               </article>
               <article>
@@ -342,131 +310,409 @@
                 />
                 <div>
                   <h3>CI/CD</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Docker</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git & GitHub</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>System Design</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Linux</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Web3 & Blockchain</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Solidity</h3>
                   <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Ethereum</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Smart Contracts</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Web3.js</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MetaMask</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>IPFS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Tools & Technologies</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Postman</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>VS Code</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>WebStorm</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Jest</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MongoDB Atlas</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>REST APIs</h3>
+                  <p>Expert</p>
                 </div>
               </article>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
+      <div class="scroll-indicator">
+        <a href="#projects" class="scroll-link" aria-label="Scroll to projects section">
+          <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+          />
+        </a>
+      </div>
     </section>
-    <section id="projects" style="margin-top: 12rem;">
+    <section id="projects">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
+      <div class="projects-container">
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image-container">
               <img
                 src="./assets/project-1.png"
-                alt="Project 1"
+                alt="Online Shopping Project"
                 class="project-img"
               />
+              <div class="project-overlay"></div>
             </div>
-            <h2 class="experience-sub-title project-title">Online Shopping</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/MONUPRAJAPAT'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://652125327dda7a5da5ba7286--vermillion-pudding-9bfac0.netlify.app/'"
-              >
-                Live Demo
-              </button>
+            <div class="project-content">
+              <h2 class="project-title">Online Shopping</h2>
+              <p class="project-description">E-commerce platform with modern UI and seamless shopping experience</p>
+              <div class="project-btn-container">
+                <a
+                  href="https://github.com/MONUPRAJAPAT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline project-btn"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://652125327dda7a5da5ba7286--vermillion-pudding-9bfac0.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary project-btn"
+                >
+                  Live Demo
+                </a>
+              </div>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          <div class="project-card">
+            <div class="project-image-container">
               <img
                 src="./assets/project-2.png"
-                alt="Project 2"
+                alt="React Social Project"
                 class="project-img"
               />
+              <div class="project-overlay"></div>
             </div>
-            <h2 class="experience-sub-title project-title">React Social</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/MONUPRAJAPAT'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://storied-chaja-905a5f.netlify.app/'"
-              >
-                Live Demo
-              </button>
+            <div class="project-content">
+              <h2 class="project-title">React Social</h2>
+              <p class="project-description">Social media application built with React and modern state management</p>
+              <div class="project-btn-container">
+                <a
+                  href="https://github.com/MONUPRAJAPAT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline project-btn"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://storied-chaja-905a5f.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary project-btn"
+                >
+                  Live Demo
+                </a>
+              </div>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          <div class="project-card">
+            <div class="project-image-container">
               <img
                 src="./assets/project-3.png"
-                alt="Project 3"
+                alt="Brown Beer Project"
                 class="project-img"
               />
+              <div class="project-overlay"></div>
             </div>
-            <h2 class="experience-sub-title project-title">Brown Beer</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/MONUPRAJAPAT'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://todo-react-typescript-h7za-obqpxast1.vercel.app/'"
-              >
-                Live Demo
-              </button>
+            <div class="project-content">
+              <h2 class="project-title">Brown Beer</h2>
+              <p class="project-description">Todo application with TypeScript and React for enhanced productivity</p>
+              <div class="project-btn-container">
+                <a
+                  href="https://github.com/MONUPRAJAPAT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline project-btn"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://todo-react-typescript-h7za-obqpxast1.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary project-btn"
+                >
+                  Live Demo
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
+      <div class="scroll-indicator">
+        <a href="#contact" class="scroll-link" aria-label="Scroll to contact section">
+          <img
+            src="./assets/arrow.png"
+            alt="Arrow icon"
+            class="icon arrow"
+          />
+        </a>
+      </div>
     </section>
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container"
-         style="margin:5px">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p>
-            <a href="mailto:monuprajapat6270@gmail.com"
-              >Email</a
-            >
-          </p>
-        </div>
-        <div class="contact-info-container"
-        style="margin: 5px;">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="www.linkedin.com/in/monuprajapat">LinkedIn</a></p>
+      <div class="contact-container">
+        <div class="contact-wrapper">
+          <div class="contact-info-section">
+            <h2 class="contact-section-title">Let's Connect</h2>
+            <p class="contact-section-description">
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            </p>
+            <div class="contact-info-upper-container">
+              <div class="contact-info-container">
+                <div class="contact-icon-wrapper">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="L22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <h3>Email</h3>
+                  <p>
+                    <a href="mailto:monuprajapat6270@gmail.com" class="contact-link"
+                      >monuprajapat6270@gmail.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info-container">
+                <div class="contact-icon-wrapper">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <h3>Phone</h3>
+                  <p>
+                    <a href="tel:+919996105221" class="contact-link">+91 9996105221</a>
+                  </p>
+                </div>
+              </div>
+              <div class="contact-info-container">
+                <div class="contact-icon-wrapper">
+                  <img
+                    src="./assets/linkedin.png"
+                    alt="LinkedIn icon"
+                    class="icon contact-icon"
+                  />
+                </div>
+                <div class="contact-details">
+                  <h3>LinkedIn</h3>
+                  <p>
+                    <a href="https://www.linkedin.com/in/monuprajapat" target="_blank" rel="noopener noreferrer" class="contact-link"
+                      >Connect with me</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-section">
+            <h2 class="contact-section-title">Send a Message</h2>
+            <form id="contactForm" class="contact-form" action="https://formsubmit.co/monuprajapat6270@gmail.com" method="POST">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="#contact">
+              <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio - Monu Prajapat">
+              <input type="hidden" name="_template" value="box">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or just say hello..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary form-submit-btn">
+                <span>Send Message</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.3334 1.66666L9.16669 10.8333M18.3334 1.66666L12.5001 18.3333L9.16669 10.8333M18.3334 1.66666L1.66669 7.49999L9.16669 10.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -474,14 +720,17 @@
       <nav>
         <div class="nav-links-container">
           <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#experience" class="footer-link">Experience</a></li>
+            <li><a href="#projects" class="footer-link">Projects</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2023 Monu Prajapat. All Rights Reserved.</p>
+      <div class="footer-content">
+        <p>&copy; <span id="current-year">2024</span> Monu Prajapat. All Rights Reserved.</p>
+        <p class="footer-tagline">Built with passion and attention to detail</p>
+      </div>
     </footer>
     <script src="script.js"></script>
   </body>
