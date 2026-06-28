@@ -629,12 +629,14 @@
   .contact-info-container {
     padding: 1.5rem;
     gap: 1rem;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .contact-icon-wrapper {
     width: 56px;
     height: 56px;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .contact-icon {
