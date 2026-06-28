@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
+    <script>
+      // Apply saved theme before paint to avoid a flash (default: dark)
+      (function () {
+        try {
+          var t = localStorage.getItem("theme") || "dark";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,8 +18,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="mediaqueries.css?v=3" />
+    <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
   </head>
   <body>
     <nav id="desktop-nav">
@@ -23,6 +33,12 @@
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -31,6 +47,10 @@
         <span class="logo-text">Monu Prajapat</span>
       </div>
       <div class="hamburger-menu">
+        <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
           <span></span>
@@ -45,24 +65,28 @@
       </div>
     </nav>
     <section id="profile">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="profile-container">
         <div class="section__pic-container">
           <div class="profile-image-wrapper">
-            <img src="./assets/profile-pic-new.png" alt="Monu Prajapat profile picture" class="profile-image" />
+            <img src="./assets/Profile3.png" alt="Monu Prajapat profile picture" class="profile-image" />
           </div>
         </div>
           <div class="section__text">
           <p class="section__text__p1">Hello, I'm</p>
           <h1 class="title">Monu Prajapat</h1>
           <p class="section__text__p2">Full Stack Developer</p>
-          <p class="section__text__p3">3+ years of expertise in MERN Stack, DevOps, AWS & Web3 • Building scalable solutions that drive business growth</p>
+          <p class="section__text__p3">4 years of expertise across the MERN stack, Next.js, Node.js / NestJS and AWS • Designing scalable, production-grade systems and microservices that drive long-term business value</p>
           <div class="btn-container">
-            <button
+            <a
               class="btn btn-primary"
-              onclick="window.open('https://flowcv.com/resume/g0h0rgd8st')"
+              href="./assets/MonuPrajapat_resume.pdf"
+              download="MonuPrajapat_resume.pdf"
+              target="_blank"
+              rel="noopener"
             >
-              Download CV
-            </button>
+              Download Resume
+            </a>
             <button class="btn btn-secondary" onclick="location.href='./#contact'">
               Get In Touch
             </button>
@@ -101,7 +125,7 @@
                 />
               </div>
               <h3>Experience</h3>
-              <p>3+ years <br />Full Stack Development</p>
+              <p>4 years <br />Full Stack Development</p>
             </div>
             <div class="details-container">
               <div class="details-icon">
@@ -113,20 +137,19 @@
               </div>
               <h3>Education</h3>
               <p>
-                B.E. (Bachelor of Engineering)<br />Computer Science and
-                Engineering
+                B.E. Computer Engineering<br />Chandigarh University • CGPA 7.8
               </p>
             </div>
           </div>
           <div class="text-container">
             <p>
-              Hi, I'm <strong>Monu Prajapat</strong>, a seasoned Full Stack Developer with 3+ years of experience specializing in the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js). I'm passionate about building scalable, high-performance web applications with modern technologies.
+              Hi, I'm <strong>Monu Prajapat</strong>, a Full Stack Developer with <strong>4 years of experience</strong> delivering scalable, production-grade web applications across the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js) and TypeScript — driving system reliability and long-term business value end to end.
             </p>
             <p>
-              My expertise spans across <strong>frontend wizardry</strong> with React, TypeScript, and modern UI frameworks, to <strong>backend architecture</strong> using Node.js and Express. I'm well-versed in <strong>DevOps practices</strong>, <strong>AWS cloud services</strong>, and have hands-on experience with <strong>Web3 technologies</strong> including blockchain and smart contracts.
+              I build <strong>frontends</strong> with React, Next.js, Redux Toolkit and Tailwind CSS, and design <strong>backends</strong> with Node.js, Express and NestJS — including REST & GraphQL APIs, secure auth/RBAC, and event-driven, microservices-based architectures. I deploy cloud-native apps on <strong>AWS</strong> (EC2, S3, RDS, Lambda) using Docker and CI/CD pipelines.
             </p>
             <p>
-              Holding a B.E. in Computer Science from Chandigarh University, I combine technical expertise with a passion for continuous learning. Beyond coding, I enjoy chess, cooking, and exploring new technologies that push the boundaries of web development.
+              Currently a <strong>Sr. Full Stack Developer at Eminence Technology</strong>, I've shipped 300+ production features and resolved 100+ critical issues. I hold a B.E. in Computer Engineering from Chandigarh University, and I enjoy taking complex, ambiguous problems from concept to dependable production systems.
             </p>
           </div>
         </div>
@@ -147,72 +170,34 @@
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container">
-            <h2 class="experience-sub-title">MERN Stack</h2>
+            <h2 class="experience-sub-title">Languages</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>MongoDB</h3>
+                  <h3>JavaScript (ES6+)</h3>
                   <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express.js</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React.js</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node.js</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>TypeScript</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Python</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>Redux</h3>
-                  <p>Advanced</p>
+                  <h3>Solidity</h3>
+                  <p>Intermediate</p>
                 </div>
               </article>
             </div>
@@ -221,282 +206,186 @@
             <h2 class="experience-sub-title">Frontend Development</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>JavaScript</h3>
+                  <h3>React.js</h3>
                   <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Next.js</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Redux Toolkit</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Tailwind CSS</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>HTML5</h3>
                   <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>CSS3</h3>
                   <p>Expert</p>
                 </div>
               </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Backend Development</h2>
+            <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>Material UI</h3>
+                  <h3>Node.js</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Express.js</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>NestJS</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>Ant Design</h3>
+                  <h3>REST APIs</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>GraphQL</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>SASS</h3>
+                  <h3>Event-Driven Systems</h3>
                   <p>Advanced</p>
                 </div>
               </article>
             </div>
           </div>
           <div class="details-container">
-            <h2 class="experience-sub-title">DevOps & Cloud</h2>
+            <h2 class="experience-sub-title">Databases & Messaging</h2>
             <div class="article-container">
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>AWS</h3>
+                  <h3>MongoDB</h3>
+                  <p>Expert</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>PostgreSQL</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
-                  <h3>CI/CD</h3>
+                  <h3>MySQL</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Redis</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>RabbitMQ</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>Apache Kafka</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Cloud & DevOps</h2>
+            <div class="article-container">
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>AWS (EC2 / S3 / RDS / Lambda)</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>Docker</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
+                <div>
+                  <h3>CI/CD</h3>
+                  <p>Advanced</p>
+                </div>
+              </article>
+              <article>
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>Git & GitHub</h3>
                   <p>Expert</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>System Design</h3>
                   <p>Advanced</p>
                 </div>
               </article>
               <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
+                <img src="./assets/checkmark.png" alt="Skill icon" class="icon" />
                 <div>
                   <h3>Linux</h3>
                   <p>Advanced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Web3 & Blockchain</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Solidity</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Ethereum</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Smart Contracts</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Web3.js</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MetaMask</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>IPFS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Tools & Technologies</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Postman</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>VS Code</h3>
-                  <p>Expert</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>WebStorm</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Jest</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>MongoDB Atlas</h3>
-                  <p>Advanced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>REST APIs</h3>
-                  <p>Expert</p>
                 </div>
               </article>
             </div>
@@ -522,25 +411,17 @@
             <div class="project-image-container">
               <img
                 src="./assets/project-1.png"
-                alt="Online Shopping Project"
+                alt="Solar Calculator project"
                 class="project-img"
               />
               <div class="project-overlay"></div>
             </div>
             <div class="project-content">
-              <h2 class="project-title">Online Shopping</h2>
-              <p class="project-description">E-commerce platform with modern UI and seamless shopping experience</p>
+              <h2 class="project-title">Solar Calculator</h2>
+              <p class="project-description">A virtual solar calculator that estimates energy production, costs, savings, and ROI before a solar installation — helping users make data-driven decisions.</p>
               <div class="project-btn-container">
                 <a
-                  href="https://github.com/MONUPRAJAPAT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-outline project-btn"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://652125327dda7a5da5ba7286--vermillion-pudding-9bfac0.netlify.app/"
+                  href="https://jigawatt.solar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-primary project-btn"
@@ -554,25 +435,17 @@
             <div class="project-image-container">
               <img
                 src="./assets/project-2.png"
-                alt="React Social Project"
+                alt="PayOnward project"
                 class="project-img"
               />
               <div class="project-overlay"></div>
             </div>
             <div class="project-content">
-              <h2 class="project-title">React Social</h2>
-              <p class="project-description">Social media application built with React and modern state management</p>
+              <h2 class="project-title">PayOnward</h2>
+              <p class="project-description">An AI-powered payment automation system that streamlines and automates recurring payment workflows with intelligent processing.</p>
               <div class="project-btn-container">
                 <a
-                  href="https://github.com/MONUPRAJAPAT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-outline project-btn"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://storied-chaja-905a5f.netlify.app/"
+                  href="https://pay-onward.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-primary project-btn"
@@ -586,25 +459,17 @@
             <div class="project-image-container">
               <img
                 src="./assets/project-3.png"
-                alt="Brown Beer Project"
+                alt="TruGamer project"
                 class="project-img"
               />
               <div class="project-overlay"></div>
             </div>
             <div class="project-content">
-              <h2 class="project-title">Brown Beer</h2>
-              <p class="project-description">Todo application with TypeScript and React for enhanced productivity</p>
+              <h2 class="project-title">TruGamer</h2>
+              <p class="project-description">A unified gaming platform to manage game libraries, track progress, discover new releases, and engage with the gaming community.</p>
               <div class="project-btn-container">
                 <a
-                  href="https://github.com/MONUPRAJAPAT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-outline project-btn"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://todo-react-typescript-h7za-obqpxast1.vercel.app/"
+                  href="https://trugamer.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-primary project-btn"
@@ -664,6 +529,18 @@
                   <p>
                     <a href="tel:+919996105221" class="contact-link">+91 9996105221</a>
                   </p>
+                </div>
+              </div>
+              <div class="contact-info-container">
+                <div class="contact-icon-wrapper">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="contact-details">
+                  <h3>Location</h3>
+                  <p>Karnal, Haryana, India</p>
                 </div>
               </div>
               <div class="contact-info-container">
@@ -732,6 +609,6 @@
         <p class="footer-tagline">Built with passion and attention to detail</p>
       </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
   </body>
 </html>

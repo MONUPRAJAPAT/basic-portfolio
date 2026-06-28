@@ -32,6 +32,29 @@
   --border-radius-xl: 40px;
 }
 
+/* ============================================
+   DARK THEME (default) — overrides palette vars.
+   Light theme uses the :root values above.
+   ============================================ */
+:root[data-theme="dark"] {
+  --primary-color: #e7e9ee;
+  --secondary-color: #0a0a14;
+  --text-primary: #f1f3f8;
+  --text-secondary: #a9b2c3;
+  --text-light: #6b7280;
+  --border-color: rgba(255, 255, 255, 0.09);
+  --border-color-hover: rgba(255, 255, 255, 0.2);
+  --bg-light: rgba(255, 255, 255, 0.045);
+  --bg-card: #11111d;
+  --accent-color: #22d3ee;
+  --accent-hover: #38bdf8;
+  --accent-violet: #8b5cf6;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 34px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 26px 55px rgba(0, 0, 0, 0.6);
+}
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -1344,4 +1367,227 @@ footer .nav-links {
 ::-moz-selection {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bg-light);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px) rotate(15deg);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Show only the relevant icon per theme */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+#desktop-nav .nav-links { gap: 2rem; }
+
+/* Toggle inside hamburger nav sits next to the icon */
+.hamburger-menu .theme-toggle {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* ============================================
+   THREE.JS HERO CANVAS
+   ============================================ */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+#profile .profile-container {
+  z-index: 2;
+}
+
+/* ============================================
+   3D TILT PROJECT CARDS
+   ============================================ */
+.projects-grid {
+  perspective: 1200px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-card.tilting {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-content,
+.project-image-container {
+  transform: translateZ(40px);
+  transform-style: preserve-3d;
+}
+
+/* Placeholder demo links until real URLs are available */
+.project-btn.coming-soon {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   DARK THEME SURFACE OVERRIDES
+   (rules with hard-coded light colours)
+   ============================================ */
+:root[data-theme="dark"] body {
+  background: linear-gradient(to bottom, #0a0a14 0%, #11111d 100%);
+}
+
+:root[data-theme="dark"] body::before {
+  background:
+    radial-gradient(circle at 18% 30%, rgba(34, 211, 238, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 82% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
+}
+
+:root[data-theme="dark"] nav {
+  background: rgba(10, 10, 20, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] nav.scrolled {
+  background: rgba(10, 10, 20, 0.92);
+  box-shadow: var(--shadow-md);
+}
+
+:root[data-theme="dark"] .logo-text {
+  background: linear-gradient(135deg, #e7e9ee 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:root[data-theme="dark"] .title {
+  background: linear-gradient(135deg, #e7e9ee 0%, #22d3ee 50%, #8b5cf6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:root[data-theme="dark"] .contact-section-title {
+  background: linear-gradient(135deg, #e7e9ee 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:root[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%);
+  color: #0a0a14;
+  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.25);
+}
+
+:root[data-theme="dark"] .btn-primary:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.35);
+}
+
+:root[data-theme="dark"] .details-container,
+:root[data-theme="dark"] article,
+:root[data-theme="dark"] .project-card,
+:root[data-theme="dark"] .contact-info-container,
+:root[data-theme="dark"] .contact-form-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+:root[data-theme="dark"] article:hover {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(139, 92, 246, 0.06) 100%);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+:root[data-theme="dark"] .project-card:hover,
+:root[data-theme="dark"] .details-container:hover,
+:root[data-theme="dark"] .contact-info-container:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+}
+
+:root[data-theme="dark"] .form-group input,
+:root[data-theme="dark"] .form-group textarea {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] .form-group input:focus,
+:root[data-theme="dark"] .form-group textarea:focus {
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+:root[data-theme="dark"] .profile-image-wrapper {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, #11111d 0%, #1a1a2e 100%);
+}
+
+:root[data-theme="dark"] .profile-image-wrapper::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.12) 100%);
+}
+
+:root[data-theme="dark"] .profile-image-wrapper::after {
+  background: linear-gradient(135deg, #22d3ee, #8b5cf6, #22d3ee);
+  opacity: 0.5;
+}
+
+:root[data-theme="dark"] footer {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Dark-coloured PNG icons need inverting to show on dark surfaces */
+:root[data-theme="dark"] .social-link .icon,
+:root[data-theme="dark"] .scroll-link .arrow,
+:root[data-theme="dark"] article .icon,
+:root[data-theme="dark"] .contact-icon {
+  filter: invert(1) brightness(1.9);
+}
+
+:root[data-theme="dark"] .social-link:hover,
+:root[data-theme="dark"] .scroll-link:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* On accent hover the icon should stay light, not invert back to dark */
+:root[data-theme="dark"] .social-link:hover .icon,
+:root[data-theme="dark"] .scroll-link:hover .arrow {
+  filter: brightness(0) invert(1);
+}
+
+/* Respect reduced-motion: hold cards flat */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transform: none !important;
+  }
 }
