@@ -208,6 +208,13 @@ nav.scrolled {
   display: inline-block;
 }
 
+/* Mobile nav right cluster: theme toggle + hamburger, aligned in the bar */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
 .hamburger-icon {
   display: flex;
   flex-direction: column;
@@ -1408,29 +1415,72 @@ footer .nav-links {
 
 #desktop-nav .nav-links { gap: 2rem; }
 
-/* Toggle inside hamburger nav sits next to the icon */
-.hamburger-menu .theme-toggle {
-  width: 40px;
-  height: 40px;
-  margin-right: 0.5rem;
-  vertical-align: middle;
+/* Toggle sits in the top bar, left of the hamburger icon */
+.nav-right .theme-toggle {
+  width: 42px;
+  height: 42px;
 }
 
 /* ============================================
-   THREE.JS HERO CANVAS
+   GLOBAL THREE.JS BACKGROUND CANVAS
+   Fixed behind ALL content; the camera flies
+   through this scene as the page scrolls.
    ============================================ */
-#hero-canvas {
-  position: absolute;
+#bg-canvas {
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
   display: block;
 }
 
 #profile .profile-container {
   z-index: 2;
+}
+
+/* ============================================
+   SMOOTH SCROLL (Lenis) — recommended base CSS
+   ============================================ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============================================
+   SCROLL-DRIVEN 3D REVEALS
+   The hidden start-state is added by JS (only when
+   IntersectionObserver exists) so content stays
+   visible if JS fails. JS adds .is-visible on enter.
+   ============================================ */
+.reveal-3d {
+  opacity: 0;
+  transform: perspective(900px) translateY(46px) rotateX(8deg);
+  transform-origin: 50% 100%;
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.reveal-3d.is-visible {
+  opacity: 1;
+  transform: perspective(900px) translateY(0) rotateX(0deg);
+}
+
+@media (max-width: 991px) {
+  .reveal-3d {
+    transform: perspective(900px) translateY(28px) rotateX(5deg);
+  }
 }
 
 /* ============================================
@@ -1451,7 +1501,6 @@ footer .nav-links {
 
 .project-content,
 .project-image-container {
-  transform: translateZ(40px);
   transform-style: preserve-3d;
 }
 
@@ -1471,15 +1520,32 @@ footer .nav-links {
 }
 
 :root[data-theme="dark"] body::before {
+  /* Glow accents over a soft dark veil that dims the 3D canvas just
+     enough to keep text readable while the particles still show through. */
   background:
     radial-gradient(circle at 18% 30%, rgba(34, 211, 238, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 82% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 45%);
+    radial-gradient(circle at 82% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+    rgba(8, 8, 16, 0.42);
 }
 
 :root[data-theme="dark"] nav {
   background: rgba(10, 10, 20, 0.65);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Legibility: lift text that sits directly over the busy 3D canvas (dark only) */
+:root[data-theme="dark"] .section__text__p1,
+:root[data-theme="dark"] .section__text__p2,
+:root[data-theme="dark"] .section__text__p3,
+:root[data-theme="dark"] .text-container p,
+:root[data-theme="dark"] .text-container strong,
+:root[data-theme="dark"] .contact-section-description {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.85);
+}
+
+:root[data-theme="dark"] .title {
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.55));
 }
 
 :root[data-theme="dark"] nav.scrolled {
@@ -1506,15 +1572,38 @@ footer .nav-links {
   background-clip: text;
 }
 
+/* Frosted-glass buttons in the dark theme */
 :root[data-theme="dark"] .btn-primary {
-  background: linear-gradient(135deg, #22d3ee 0%, #8b5cf6 100%);
-  color: #0a0a14;
-  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f3f8;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 :root[data-theme="dark"] .btn-primary:hover {
-  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
-  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.16);
+  color: #ffffff;
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 12px 32px rgba(34, 211, 238, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+:root[data-theme="dark"] .btn-secondary,
+:root[data-theme="dark"] .btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f3f8;
+  border-color: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+:root[data-theme="dark"] .btn-secondary:hover,
+:root[data-theme="dark"] .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme="dark"] .details-container,
@@ -1569,6 +1658,7 @@ footer .nav-links {
 :root[data-theme="dark"] .social-link .icon,
 :root[data-theme="dark"] .scroll-link .arrow,
 :root[data-theme="dark"] article .icon,
+:root[data-theme="dark"] .details-icon .icon,
 :root[data-theme="dark"] .contact-icon {
   filter: invert(1) brightness(1.9);
 }
@@ -1585,9 +1675,17 @@ footer .nav-links {
   filter: brightness(0) invert(1);
 }
 
-/* Respect reduced-motion: hold cards flat */
+/* Respect reduced-motion: hold cards flat and force all
+   scroll-revealed content visible (belt-and-braces backup
+   to the JS guard, in case GSAP still loaded). */
 @media (prefers-reduced-motion: reduce) {
   .project-card {
+    transform: none !important;
+  }
+  section,
+  .reveal-3d {
+    opacity: 1 !important;
+    visibility: visible !important;
     transform: none !important;
   }
 }

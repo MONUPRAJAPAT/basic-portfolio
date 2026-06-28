@@ -18,11 +18,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3" />
-    <link rel="stylesheet" href="mediaqueries.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="mediaqueries.css?v=9" />
     <script defer src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   </head>
   <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
     <nav id="desktop-nav">
       <div class="logo">
         <span class="logo-text">Monu Prajapat</span>
@@ -46,26 +48,27 @@
       <div class="logo">
         <span class="logo-text">Monu Prajapat</span>
       </div>
-      <div class="hamburger-menu">
+      <div class="nav-right">
         <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()" class="nav-link">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()" class="nav-link">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()" class="nav-link">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()" class="nav-link">Contact</a></li>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="#about" onclick="toggleMenu()" class="nav-link">About</a></li>
+            <li><a href="#experience" onclick="toggleMenu()" class="nav-link">Experience</a></li>
+            <li><a href="#projects" onclick="toggleMenu()" class="nav-link">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()" class="nav-link">Contact</a></li>
+          </div>
         </div>
       </div>
     </nav>
     <section id="profile">
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="profile-container">
         <div class="section__pic-container">
           <div class="profile-image-wrapper">
@@ -76,7 +79,7 @@
           <p class="section__text__p1">Hello, I'm</p>
           <h1 class="title">Monu Prajapat</h1>
           <p class="section__text__p2">Full Stack Developer</p>
-          <p class="section__text__p3">4 years of expertise across the MERN stack, Next.js, Node.js / NestJS and AWS • Designing scalable, production-grade systems and microservices that drive long-term business value</p>
+          <p class="section__text__p3">4+ years of expertise across the MERN stack, Next.js, Node.js / NestJS and AWS • Designing scalable, production-grade systems and microservices that drive long-term business value</p>
           <div class="btn-container">
             <a
               class="btn btn-primary"
@@ -125,7 +128,7 @@
                 />
               </div>
               <h3>Experience</h3>
-              <p>4 years <br />Full Stack Development</p>
+              <p>4+ years <br />Full Stack Development</p>
             </div>
             <div class="details-container">
               <div class="details-icon">
@@ -143,7 +146,7 @@
           </div>
           <div class="text-container">
             <p>
-              Hi, I'm <strong>Monu Prajapat</strong>, a Full Stack Developer with <strong>4 years of experience</strong> delivering scalable, production-grade web applications across the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js) and TypeScript — driving system reliability and long-term business value end to end.
+              Hi, I'm <strong>Monu Prajapat</strong>, a Full Stack Developer with <strong>4+ years of experience</strong> delivering scalable, production-grade web applications across the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js) and TypeScript — driving system reliability and long-term business value end to end.
             </p>
             <p>
               I build <strong>frontends</strong> with React, Next.js, Redux Toolkit and Tailwind CSS, and design <strong>backends</strong> with Node.js, Express and NestJS — including REST & GraphQL APIs, secure auth/RBAC, and event-driven, microservices-based architectures. I deploy cloud-native apps on <strong>AWS</strong> (EC2, S3, RDS, Lambda) using Docker and CI/CD pipelines.
@@ -609,6 +612,6 @@
         <p class="footer-tagline">Built with passion and attention to detail</p>
       </div>
     </footer>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>
